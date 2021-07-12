@@ -25,7 +25,7 @@ puts "3. retornar a idade em valor de segundos, sendo que a idade deve ser infor
 
 def calculaIdadeEmSegundos(idade)
 totalDias = idade * 365
-totalSegundos = totalDias * 60 * 60 * 24
+return totalSegundos = totalDias * 60 * 60 * 24
 end
 
 puts calculaIdadeEmSegundos(20).to_s + " segundos = 20 anos", ""
