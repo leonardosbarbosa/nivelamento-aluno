@@ -12,19 +12,19 @@ def calculaDiametro(raio)
 end
 
 def calculaComprimento(raio)
-   return diametroCirculo(raio) * Math::PI
+   return calculaDiametro(raio) * Math::PI
 end
 
 def calculaArea(raio)
     return (raio**2) * Math::PI
 end
 
-raio = 4.5
+raio = 5
 
 # Imprimindo usando o recurso de interpolação
 
-puts "Diâmetro de um círculo de raio #{raio}: #{diametroCirculo(raio)}", ""
+puts "Diâmetro de um círculo de raio #{raio}: #{calculaDiametro(raio)}", ""
 
-puts "Comprimento de um círculo de raio #{raio}: #{comprimentoCirculo(raio)}", ""
+puts "Comprimento de um círculo de raio #{raio}: #{calculaComprimento(raio)}", ""
 
-puts "Área de um círculo de raio #{raio}: #{areaCirculo(raio)}", ""
+puts "Área de um círculo de raio #{raio}: #{calculaArea(raio)}", ""
