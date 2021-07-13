@@ -21,8 +21,8 @@ end
 print "Digite o valor do raio: "
 raio = gets.to_f
 
-puts "Diâmetro de um círculo de raio #{raio}: #{calculaDiametro(raio)}", ""
+puts "Diâmetro de um círculo de raio #{raio}: #{calculaDiametro(raio).round(2)}", ""
 
-puts "Comprimento de um círculo de raio #{raio}: #{calculaComprimento(raio)}", ""
+puts "Comprimento de um círculo de raio #{raio}: #{calculaComprimento(raio).round(2)}", ""
 
-puts "Área de um círculo de raio #{raio}: #{calculaArea(raio)}", ""
+puts "Área de um círculo de raio #{raio}: #{calculaArea(raio).round(2)}", ""
