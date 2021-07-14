@@ -14,18 +14,26 @@
 #    transmissão e taxa de ocupação de leitos) e baseado nas regras descritas acima, retornar uma string com o nome da cor da fase da pandemia.
 
 def fase_pandemica(taxaVacinacao, fatorTransmissao, taxaOcupacao)
-    if taxaOcupacao > 0.9
-        return "roxa"
-    elsif taxaOcupacao > 0.8 || fatorTransmissao >= 1
-        return "vermelha"
-    elsif taxaOcupacao > 0.65 && fatorTransmissao < 1
-        return "laranja"   
-    elsif taxaOcupacao > 0.5 && fatorTransmissao < 1
-        return "amarela"    
-    elsif taxaOcupacao <= 0.5 && fatorTransmissao < 1 
-        return "verde"
-    elsif taxaVacinacao > 0.8
-        return "azul"         
+    
+    mensagemErro = validaDados(taxaVacinacao, fatorTransmissao, taxaOcupacao)
+
+    if mensagemErro != nil
+        return "ERRO! \n#{mensagemErro}"
+    else
+        print "Fase atual: "
+        if taxaOcupacao > 0.9 && taxaVacinacao < 0.8
+            return "roxa"
+        elsif (taxaOcupacao > 0.8 || fatorTransmissao >= 1) && taxaVacinacao < 0.8
+            return "vermelha"
+        elsif taxaOcupacao > 0.65 && fatorTransmissao < 1 && taxaVacinacao < 0.8
+            return "laranja"
+        elsif taxaOcupacao > 0.5 && fatorTransmissao < 1 && taxaVacinacao < 0.8
+            return "amarela"
+        elsif taxaOcupacao <= 0.5 && fatorTransmissao < 1 && taxaVacinacao < 0.8
+            return "verde"
+        else
+            return "azul" 
+        end
     end
 end
 
@@ -37,7 +45,7 @@ def validaDados(taxaVacinacao, fatorTransmissao, taxaOcupacao)
     elsif taxaOcupacao < 0 || taxaOcupacao > 1
         return "A taxa de ocupação de leitos deve ser um número entre 0.0 e 1.0"
     else
-        return nil    
+        return nil # Caso os dados forem válidos    
     end   
 end
 
@@ -49,19 +57,12 @@ print "Digite a taxa de ocupação dos leitos: "
 ocupacao = gets.to_f
 puts
 
-mensagemErro = validaDados(taxa, fator, ocupacao)
-
-if (mensagemErro == nil)
-    puts "A cor da fase atual é #{fase_pandemica(taxa, fator, ocupacao)}"
-else
-    puts "ERRO!"
-    puts mensagemErro
-end
+puts fase_pandemica(taxa, fator, ocupacao)
 
 # TESTES
 # fase_pandemica (0.3, 2, 1) -> retorna roxa
 # fase_pandemica (0.1, 2, 0.81) -> retorna vermelha
 # fase_pandemica (0.1, 0.9, 0.66) -> retorna laranja
-# fase_pandemica (1, 0.8, 0.51) -> retorna amarela
+# fase_pandemica (0.7, 0.8, 0.51) -> retorna amarela
 # fase_pandemica(0.1, 0.7, 0.5) -> retorna verde
-# fase_pandemica (0.1, 2, 0.81) -> retorna azul
+# fase_pandemica (0.81, 0.3, 0.4) -> retorna azul
