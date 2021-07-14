@@ -4,7 +4,7 @@
 # e depois vamos pedir para o jogador tentar adivinhar esse número
 
 def validaChute(chute)
-    if chute != "0" && chute.to_i == 0
+    if (chute != "0" && chute.to_i == 0) || chute.include?(".")
         return "O valor digitado deve ser um número inteiro!"
     end   
     chute = chute.to_i  
