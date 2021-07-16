@@ -12,12 +12,8 @@ def calculaMMC(num1, num2)
         maior = num2
     end
     mmc = maior
-    loop do
-        if mmc % num1 == 0 && mmc % num2 == 0
-            break
-        else
-           mmc = mmc + 1 
-        end
+    until mmc % num1 == 0 && mmc % num2 == 0
+        mmc = mmc + 1
     end
     return mmc
 end
